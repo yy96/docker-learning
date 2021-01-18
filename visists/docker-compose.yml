@@ -1,0 +1,20 @@
+# options for connecting containers
+# 1. use docker CLI's network feature (seldom used)
+# 2. use docker compose
+#   - separate CLI that gets installed along with Docker
+#   - used to start up multiple docker containers at the same time
+#   - automates some of the long-winded arguments we were passing to 'docker run'
+
+# specify the version of docker compose used
+version: '3'
+# services refer to a type of container
+services:
+  # create redis server using redis image from docker hub
+  redis-server:
+    image: 'redis'
+  node-app:
+    # create from the dockerfile in the current direcotry
+    build: .
+    ports:
+      # local port: docker machine
+      - "4001:8081"
