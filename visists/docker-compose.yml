@@ -5,15 +5,28 @@
 #   - used to start up multiple docker containers at the same time
 #   - automates some of the long-winded arguments we were passing to 'docker run'
 
+# docker-compose up: start the container and run in the window
+# docker-compose up --build: rebuild the whole container (use when you change the container files)
+# docker-compose up -d: start the container at the background
+# docker-compose down: stop and remove the container
+
 # specify the version of docker compose used
 version: '3'
 # services refer to a type of container
 services:
   # create redis server using redis image from docker hub
+  # this is also the name of the host specified in redis client
   redis-server:
     image: 'redis'
   node-app:
-    # create from the dockerfile in the current direcotry
+    # create from the dockerfile in the current directory
+
+    # restart policies
+    # - "no": Never attempt to restart this .container if it stops or crashes
+    # - always: If this container stops for any reason always attempt to restart it
+    # - on-failure: Only restart if the container stops with an error code
+    # - unless-stopped: Always restart unless we (the developers) forcibly stop it
+    restart: always
     build: .
     ports:
       # local port: docker machine
