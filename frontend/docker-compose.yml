@@ -1,0 +1,17 @@
+# docker-compose down && docker-compose up --build
+
+version: '3'
+services:
+  web:
+    build:
+      # to indicate where do you want the docker to build from
+      context: .
+      # location of dockerfile
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      # map current folder outside container to the app folder inside the container
+      - .:/app
+    stdin_open: true

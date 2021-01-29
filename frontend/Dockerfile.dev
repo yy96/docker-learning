@@ -1,0 +1,14 @@
+# docker build -f Dockerfile.dev .
+# -f represent to specify the particular file used for built
+# docker run -it -p 3000:3000 CONTAINER_ID
+# docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app <image_id>
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]
