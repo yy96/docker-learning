@@ -1,4 +1,4 @@
-# one set of the layer
+# BUILD PHASE
 # as - tags the name of the phase
 FROM node:alpine as builder
 WORKDIR "/app"
@@ -8,9 +8,10 @@ COPY . .
 # build folder will be created in the working directory
 RUN npm run build
 
-# only copy the needed information from the first set of the layer
+# RUN PHASE
+# only copy the needed information from the first phase
 # this will help to reduce the size of the image
 FROM nginx
-# copy over sth from different phase
+# copy over the result of 'npm run build' from BUILD PHASE
 COPY --from=builder /app/build /usr/share/nginx/html
 
