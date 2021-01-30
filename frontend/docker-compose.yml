@@ -15,3 +15,12 @@ services:
       # map current folder outside container to the app folder inside the container
       - .:/app
     stdin_open: true
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]
+    stdin_open: true

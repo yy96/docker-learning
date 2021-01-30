@@ -2,6 +2,13 @@
 # -f represent to specify the particular file used for built
 # docker run -it -p 3000:3000 CONTAINER_ID
 # docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app <image_id>
+
+# execute tests: docker run <CONTAINER_ID> npm run test
+
+# attach to the current container started from docker compose and execute command to capture changes in test:
+# docker attach: always attach to the primary process of the container (in this case is npm)
+# docker exec -it <CURR_CONTAINER_ID> npm run test
+
 FROM node:alpine
 
 WORKDIR '/app'
