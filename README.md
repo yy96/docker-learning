@@ -16,4 +16,4 @@ Repo records the projects in [udemy course - docker and kubernetes: the complete
 | docker exec -it <container_id> command  |  execute commands in running containers <br /> `-i` attache terminal to stdin <br /> `-t` all the text entered & shows out are in well-formatted way  |
 | docker exec -it <container_id> sh   | getting a command prompt in a container <br /> command processer can be [bash; powershell; zsh; sh]  |
 | docker run -it <container_id> sh   | start your container with a shell  |
-| docker build -t <docker_id/repor_project_name:version> .   | tag your image with a specified name  |
+| docker build -t <docker_id/repo_project_name:version> .   | tag your image with a specified name  |
