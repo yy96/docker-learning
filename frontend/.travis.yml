@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t yuanyuan2019/docker-learning -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true yuanyuan2019/docer-learning npm run test -- --coverage

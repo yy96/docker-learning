@@ -11,6 +11,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
+      # exist inside your docker container
       - /app/node_modules
       # map current folder outside container to the app folder inside the container
       - .:/app

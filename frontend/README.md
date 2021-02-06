@@ -68,3 +68,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+What has been covered in this section:
+- development workflow and how docker is used in the flow. 
+- In this section, it has specifically covered how docker file is used in development 
+  - command to build a docker file using a specific file with `-f` flag
+  - ways to capture real-time changes in the file
+    - using `-v` to allow built-app 
+    - including `volumes` in docker compose file
+- docker file usage in tests
+    - execute tests
+    - live updates test using docker compose
+    - interactive tests with attching to existing running container and execute in shell
+- docker for production build
+    - mutli-phase dockerfile to save the file space required
+
+
+Qn:
+- when we run `docker-compose up` with 2 services specified in docker compose yaml file, what's the number of containers being run?
+- If we change the CMD section in the current dockerfile.dev to CMD ["npm", "run", "start"], what will be the command we run to capture real-time changes in test files?
