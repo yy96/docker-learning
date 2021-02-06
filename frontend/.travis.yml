@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run -e CI=true yuanyuan2019/docer-learning npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  # depends on the region you created your elastic beanstalk instance
+  region: "us-west-2"
+  app: "docker-learning"
+  env: "Docker-env"
+  # the s-3 bucket being automatically generated
+  bucket_name: "elasticbeanstalk-us-west-2-dummycode"
+  bucket_path: "docker-learning"
+  on:
+    branch: main
+
