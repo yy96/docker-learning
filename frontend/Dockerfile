@@ -12,6 +12,8 @@ RUN npm run build
 # only copy the needed information from the first phase
 # this will help to reduce the size of the image
 FROM nginx
+# for elastic beanstalk to map the port to this number automatically
+EXPOSE 80
 # copy over the result of 'npm run build' from BUILD PHASE
 COPY --from=builder /app/build /usr/share/nginx/html
 
